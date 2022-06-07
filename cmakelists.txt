@@ -1,12 +1,12 @@
 cmake_minimum_required(VERSION 3.20)
 
-project(HelloTriangleEx1 LANGUAGES CXX)
+project(HelloTriangleEx2 LANGUAGES CXX)
 
 set(CMAKE_CXX_STANDARD 17)
 
 add_subdirectory(./vendor/glfw)
 add_subdirectory(./vendor/glad)
 
-add_executable(HelloTriangleEx1 src/entry.cc)
-target_include_directories(HelloTriangleEx1 PRIVATE ./vendor/glfw/include ./vendor/glad/include)
-target_link_libraries(HelloTriangleEx1 PRIVATE glfw glad)
+add_executable(HelloTriangleEx2 src/entry.cc)
+target_include_directories(HelloTriangleEx2 PRIVATE ./vendor/glfw/include ./vendor/glad/include)
+target_link_libraries(HelloTriangleEx2 PRIVATE glfw glad)
