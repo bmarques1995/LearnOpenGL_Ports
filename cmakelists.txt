@@ -1,0 +1,12 @@
+cmake_minimum_required(VERSION 3.20)
+
+project(HelloWindow LANGUAGES CXX)
+
+set(CMAKE_CXX_STANDARD 17)
+
+add_subdirectory(./vendor/glfw)
+add_subdirectory(./vendor/glad)
+
+add_executable(HelloWindow src/entry.cc)
+target_include_directories(HelloWindow PRIVATE ./vendor/glfw/include ./vendor/glad/include)
+target_link_libraries(HelloWindow PRIVATE glfw glad)
