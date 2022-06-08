@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.20)
 
-project(ShadersSource LANGUAGES CXX)
+project(ShadersEx1 LANGUAGES CXX)
 
 set(CMAKE_CXX_STANDARD 17)
 
@@ -14,7 +14,7 @@ file(GLOB_RECURSE F_SHAD RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} "*.fs")
 
 message(${L_OGL_HEADERS})
 
-add_executable(ShadersSource src/entry.cc ${L_OGL_HEADERS})
+add_executable(ShadersEx1 src/entry.cc ${L_OGL_HEADERS})
 
 foreach(vertex IN LISTS V_SHAD)
     file(COPY ${vertex} DESTINATION ${CMAKE_CURRENT_BINARY_DIR})
@@ -24,5 +24,5 @@ foreach(frag IN LISTS F_SHAD)
     file(COPY ${frag} DESTINATION ${CMAKE_CURRENT_BINARY_DIR})
 endforeach()
 
-target_include_directories(ShadersSource PRIVATE ./vendor/glfw/include ./vendor/glad/include ./vendor/glm ./vendor/stb ./src)
-target_link_libraries(ShadersSource PRIVATE glfw glad)
+target_include_directories(ShadersEx1 PRIVATE ./vendor/glfw/include ./vendor/glad/include ./vendor/glm ./vendor/stb ./src)
+target_link_libraries(ShadersEx1 PRIVATE glfw glad)
