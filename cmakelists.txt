@@ -1,12 +1,12 @@
 cmake_minimum_required(VERSION 3.20)
 
-project(HelloTriangleEx3 LANGUAGES CXX)
+project(ShadersUniform LANGUAGES CXX)
 
 set(CMAKE_CXX_STANDARD 17)
 
 add_subdirectory(./vendor/glfw)
 add_subdirectory(./vendor/glad)
 
-add_executable(HelloTriangleEx3 src/entry.cc)
-target_include_directories(HelloTriangleEx3 PRIVATE ./vendor/glfw/include ./vendor/glad/include)
-target_link_libraries(HelloTriangleEx3 PRIVATE glfw glad)
+add_executable(ShadersUniform src/entry.cc)
+target_include_directories(ShadersUniform PRIVATE ./vendor/glfw/include ./vendor/glad/include)
+target_link_libraries(ShadersUniform PRIVATE glfw glad)
