@@ -1,12 +1,28 @@
 cmake_minimum_required(VERSION 3.20)
 
-project(ShadersInterpolation LANGUAGES CXX)
+project(ShadersSource LANGUAGES CXX)
 
 set(CMAKE_CXX_STANDARD 17)
 
 add_subdirectory(./vendor/glfw)
 add_subdirectory(./vendor/glad)
 
-add_executable(ShadersInterpolation src/entry.cc)
-target_include_directories(ShadersInterpolation PRIVATE ./vendor/glfw/include ./vendor/glad/include)
-target_link_libraries(ShadersInterpolation PRIVATE glfw glad)
+file(GLOB_RECURSE L_OGL_HEADERS RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} "src/learnopengl/*.h")
+
+file(GLOB_RECURSE V_SHAD RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} "*.vs")
+file(GLOB_RECURSE F_SHAD RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} "*.fs")
+
+message(${L_OGL_HEADERS})
+
+add_executable(ShadersSource src/entry.cc ${L_OGL_HEADERS})
+
+foreach(vertex IN LISTS V_SHAD)
+    file(COPY ${vertex} DESTINATION ${CMAKE_CURRENT_BINARY_DIR})
+endforeach()
+
+foreach(frag IN LISTS F_SHAD)
+    file(COPY ${frag} DESTINATION ${CMAKE_CURRENT_BINARY_DIR})
+endforeach()
+
+target_include_directories(ShadersSource PRIVATE ./vendor/glfw/include ./vendor/glad/include ./vendor/glm ./vendor/stb ./src)
+target_link_libraries(ShadersSource PRIVATE glfw glad)
